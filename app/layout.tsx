@@ -1,26 +1,32 @@
-import "./globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
-import type React from "react"
+import "./globals.css";
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import type React from "react";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Amit Kushwaha | Software Developer",
-  description: "Portfolio of Amit Kushwaha, Fullstack Developer specializing in React, Node.js, and Java",
-    generator: 'v0.dev'
-}
+  description:
+    "Portfolio of Amit Kushwaha, Fullstack Developer specializing in React, Node.js, and Java",
+  generator: "v0.dev",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-background text-foreground antialiased`}>
+      <head>
+        <link rel="icon" href="/images/donut_783083.png" sizes="any" />
+      </head>
+      <body
+        className={`${inter.className} min-h-screen bg-background text-foreground antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -36,9 +42,7 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
 
-
-
-import './globals.css'
+import "./globals.css";
