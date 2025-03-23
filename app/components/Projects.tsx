@@ -1,11 +1,12 @@
-"use client"
+"use server";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { ExternalLink, Github } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import kanBanPng from "@/public/images/kanBanPng.png";
 
 const projects = [
   {
@@ -36,10 +37,10 @@ const projects = [
     github: "https://github.com/amit/budget-tracker",
     demo: "https://budget-tracker-amit.vercel.app",
   },
-]
+];
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(0)
+  const [activeProject, setActiveProject] = useState(0);
 
   return (
     <section className="py-20 bg-background" id="projects">
@@ -50,8 +51,12 @@ export default function Projects() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold text-foreground">Featured Projects</h2>
-          <p className="mt-4 text-lg text-muted-foreground">A selection of my recent development work</p>
+          <h2 className="text-3xl font-bold text-foreground">
+            Featured Projects
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            A selection of my recent development work
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -66,16 +71,21 @@ export default function Projects() {
             >
               <div className="relative h-64 w-full">
                 <Image
-                  src={project.image || "/placeholder.svg"}
+                  src="images/kanBanPng.png"
                   alt={project.title}
+                  priority
                   layout="fill"
                   objectFit="cover"
                   className="transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">{project.description}</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
@@ -85,7 +95,9 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <h4 className="font-semibold text-foreground mb-2">Key Features:</h4>
+                <h4 className="font-semibold text-foreground mb-2">
+                  Key Features:
+                </h4>
                 <ul className="list-disc pl-5 mb-6 space-y-1">
                   {project.highlights.map((highlight, i) => (
                     <li key={i} className="text-sm text-muted-foreground">
@@ -96,13 +108,23 @@ export default function Projects() {
 
                 <div className="flex space-x-4">
                   <Button asChild variant="outline" size="sm">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center"
+                    >
                       <Github className="h-4 w-4 mr-2" />
                       Code
                     </a>
                   </Button>
                   <Button asChild size="sm">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center"
+                    >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Live Demo
                     </a>
@@ -114,6 +136,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
